@@ -16,6 +16,7 @@
 		819D48941D6D996700E6A907 /* ExampleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 819D48931D6D996700E6A907 /* ExampleObject.m */; };
 		819D48971D6D9BDB00E6A907 /* ObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 819D48961D6D9BDB00E6A907 /* ObjectPool.m */; };
 		819D48A61D6DA0A100E6A907 /* PoolRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 819D48A51D6DA0A100E6A907 /* PoolRecord.m */; };
+		81FCF82E1D8B114F00A808BB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 81FCF82D1D8B114F00A808BB /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		819D48961D6D9BDB00E6A907 /* ObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectPool.m; sourceTree = "<group>"; };
 		819D48A41D6DA0A100E6A907 /* PoolRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolRecord.h; sourceTree = "<group>"; };
 		819D48A51D6DA0A100E6A907 /* PoolRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolRecord.m; sourceTree = "<group>"; };
+		81FCF82D1D8B114F00A808BB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		819D486E1D6D956300E6A907 = {
 			isa = PBXGroup;
 			children = (
+				81FCF82D1D8B114F00A808BB /* LICENSE */,
 				819D48791D6D956300E6A907 /* pool_object_pattern */,
 				819D48781D6D956300E6A907 /* Products */,
 			);
@@ -161,6 +164,7 @@
 			files = (
 				819D488A1D6D956300E6A907 /* LaunchScreen.storyboard in Resources */,
 				819D48871D6D956300E6A907 /* Assets.xcassets in Resources */,
+				81FCF82E1D8B114F00A808BB /* LICENSE in Resources */,
 				819D48851D6D956300E6A907 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +332,7 @@
 				819D48901D6D956300E6A907 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
