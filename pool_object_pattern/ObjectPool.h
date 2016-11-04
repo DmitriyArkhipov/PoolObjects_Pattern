@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PoolRecord.h"
+
+@class ExampleObject;
 
 @interface ObjectPool : NSObject
-
-@property NSMutableArray *pool;
 
 + (instancetype) sharedInstance;
 

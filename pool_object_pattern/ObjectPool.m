@@ -7,6 +7,14 @@
 //
 
 #import "ObjectPool.h"
+#import "PoolRecord.h"
+#import "ExampleObject.h"
+
+@interface ObjectPool ()
+
+@property (strong, atomic) NSMutableArray *pool;
+
+@end
 
 
 @implementation ObjectPool
@@ -35,48 +43,55 @@
 
 - (ExampleObject *)acquire {
     
-    for (int i = 0; i < [_pool count]; i++) {
-        if ([_pool[i] isKindOfClass:[PoolRecord class]]) {
-            PoolRecord *poolRecord = _pool[i];
-            
-            if (!poolRecord.isUse) {
-                poolRecord.isUse = YES;
-                return poolRecord.instance;
-            }
-        }
-    }
+    @synchronized (self) {
     
-    PoolRecord *record = [[PoolRecord alloc] init];
-    record.instance = [[ExampleObject alloc] initWithId:10];
-    record.isUse = YES;
-    
-    [_pool addObject:record];
-    
-
-    return record.instance;
-}
-- (void) releaseObject:(ExampleObject *)obj {
-    
-    for (int i = 0; i < [_pool count]; i++) {
-        if ([_pool[i] isKindOfClass:[PoolRecord class]]) {
-            
-            PoolRecord *poolRecord = _pool[i];
-            
-            if ([poolRecord.instance isKindOfClass:[ExampleObject class]]) {
+        for (int i = 0; i < [_pool count]; i++) {
+            if ([_pool[i] isKindOfClass:[PoolRecord class]]) {
+                PoolRecord *poolRecord = _pool[i];
                 
-                ExampleObject *poolRecordObj = poolRecord.instance;
-                
-                if (poolRecordObj == obj) {
-                    
-                    poolRecord.isUse = NO;
-                    [poolRecordObj clear];
-                    
+                if (!poolRecord.isUse) {
+                    poolRecord.isUse = YES;
+                    return poolRecord.instance;
                 }
             }
         }
+
+        PoolRecord *record = [[PoolRecord alloc] init];
+        record.instance = [[ExampleObject alloc] initWithId:10];
+        record.isUse = YES;
+
+        [_pool addObject:record];
+
+
+        return record.instance;
+        
     }
+}
 
-
+- (void) releaseObject:(ExampleObject *)obj {
+    
+    @synchronized (self) {
+    
+        for (int i = 0; i < [_pool count]; i++) {
+            if ([_pool[i] isKindOfClass:[PoolRecord class]]) {
+                
+                PoolRecord *poolRecord = _pool[i];
+                
+                if ([poolRecord.instance isKindOfClass:[ExampleObject class]]) {
+                    
+                    ExampleObject *poolRecordObj = poolRecord.instance;
+                    
+                    if (poolRecordObj == obj) {
+                        
+                        poolRecord.isUse = NO;
+                        [poolRecordObj clear];
+                        
+                    }
+                }
+            }
+        }
+        
+    }
 }
 
 @end

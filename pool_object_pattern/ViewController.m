@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ObjectPool.h"
+#import "ExampleObject.h"
 
 @interface ViewController ()
 

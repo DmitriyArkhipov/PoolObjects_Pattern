@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ExampleObject.h"
+
+@class ExampleObject;
 
 @interface PoolRecord : NSObject
 
